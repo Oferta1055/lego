@@ -1,0 +1,635 @@
+/* LEGO Global Slide Cart */
+:root{
+  --lc-yellow:#FFCF00;
+  --lc-yellow-dark:#F5B800;
+  --lc-red:#DA291C;
+  --lc-orange:#F58220;
+  --lc-dark:#1B2A3A;
+  --lc-text:#0f172a;
+  --lc-muted:#64748b;
+  --lc-border:#e5e7eb;
+  --lc-bg:#ffffff;
+  --lc-soft:#FFF8E1;
+  --lc-shadow:0 20px 60px rgba(0,0,0,.25);
+  --lc-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Header cart button badge (attached to existing header sacola button) */
+.lc-header-cart{ position:relative; }
+.lc-header-cart .lc-badge{
+  position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;padding:0 5px;
+  background:var(--lc-red);color:#fff;border-radius:10px;
+  font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;
+  border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.2);
+  font-family:var(--lc-font);line-height:1;pointer-events:none;
+}
+
+
+/* Overlay */
+.lc-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.45);
+  opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:2147483100;
+}
+.lc-overlay.lc-open{opacity:1;pointer-events:auto}
+
+/* Drawer */
+.lc-drawer{
+  position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);
+  background:var(--lc-bg);z-index:2147483200;
+  transform:translateX(100%);transition:transform .3s cubic-bezier(.22,.61,.36,1);
+  display:flex;flex-direction:column;font-family:var(--lc-font);color:var(--lc-text);
+  box-shadow:var(--lc-shadow);
+}
+.lc-drawer.lc-open{transform:translateX(0)}
+
+.lc-header{
+  background:var(--lc-yellow);color:#000;padding:16px 18px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:4px solid var(--lc-red);
+}
+.lc-header h3{margin:0;font-size:18px;font-weight:800;letter-spacing:.3px;text-transform:uppercase}
+.lc-header .lc-close{
+  background:#000;color:#fff;border:0;width:32px;height:32px;border-radius:50%;
+  cursor:pointer;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+
+.lc-body{flex:1;overflow-y:auto;padding:14px 16px;background:#fafafa}
+.lc-empty{
+  text-align:center;padding:40px 20px;color:var(--lc-muted);
+}
+.lc-empty svg{width:80px;height:80px;opacity:.35;margin-bottom:12px}
+.lc-empty h4{margin:0 0 6px;color:var(--lc-text);font-size:16px}
+.lc-empty p{margin:0;font-size:13px}
+
+.lc-item{
+  background:#fff;border:1px solid var(--lc-border);border-radius:10px;
+  padding:10px;display:grid;grid-template-columns:64px 1fr auto;gap:10px;
+  margin-bottom:10px;align-items:center;
+}
+.lc-item img{width:64px;height:64px;object-fit:contain;background:#f3f4f6;border-radius:8px}
+.lc-item .lc-name{font-size:13px;font-weight:600;line-height:1.3;color:var(--lc-text);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.lc-item .lc-price{font-size:13px;color:var(--lc-red);font-weight:700;margin-top:4px}
+.lc-qty{
+  display:inline-flex;align-items:center;border:1px solid var(--lc-border);border-radius:8px;margin-top:6px;
+}
+.lc-qty button{background:transparent;border:0;width:26px;height:26px;cursor:pointer;font-size:14px;font-weight:700;color:var(--lc-text)}
+.lc-qty span{min-width:26px;text-align:center;font-size:13px;font-weight:700}
+.lc-remove{
+  background:transparent;border:0;color:var(--lc-muted);font-size:11px;cursor:pointer;
+  align-self:flex-start;padding:0;text-decoration:underline;
+}
+.lc-item-col{display:flex;flex-direction:column;justify-content:center}
+.lc-item-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+
+.lc-footer{
+  border-top:1px solid var(--lc-border);padding:14px 16px 18px;background:#fff;
+}
+.lc-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-size:14px}
+.lc-row.total{font-size:17px;font-weight:800;margin-top:8px}
+.lc-row.total .lc-total-val{color:var(--lc-red)}
+.lc-checkout{
+  display:block;width:100%;padding:14px;margin-top:12px;
+  background:var(--lc-orange);color:#fff;text-align:center;text-decoration:none;
+  border-radius:10px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;
+  border:0;cursor:pointer;font-size:15px;font-family:var(--lc-font);
+  transition:background .2s ease;
+}
+.lc-checkout:hover{background:#e57216}
+.lc-secure{
+  text-align:center;font-size:11px;color:var(--lc-muted);margin-top:10px;
+}
+
+/* Toast */
+.lc-toast{
+  position:fixed;bottom:90px;right:18px;z-index:2147483300;
+  background:#0f172a;color:#fff;padding:12px 16px;border-radius:10px;
+  font-family:var(--lc-font);font-size:13px;font-weight:600;
+  box-shadow:var(--lc-shadow);opacity:0;transform:translateY(10px);
+  transition:opacity .25s ease,transform .25s ease;pointer-events:none;
+  border-left:4px solid var(--lc-yellow);
+}
+.lc-toast.lc-show{opacity:1;transform:translateY(0)}
+
+@media (max-width:480px){
+  .lc-drawer{width:100%}
+}
+
+
+/* ==========================================================
+   Fixes: customer photo gallery + reviews section (mobile-first)
+   ========================================================== */
+
+/* Customer photos: horizontal grid instead of stacked */
+.photo-gallery-section{
+  padding:16px 12px;
+  border-top:1px solid var(--lc-border);
+}
+.photo-gallery-section-title{
+  display:block;
+  font-family:var(--lc-font);
+  font-weight:800;
+  font-size:16px;
+  color:var(--lc-text);
+  margin:0 0 12px;
+}
+.photo-gallery-thumbnail-list{
+  display:grid !important;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  align-items:stretch;
+  width:100%;
+  max-width:640px;
+  margin:0;
+  padding:0;
+}
+.photo-gallery-thumbnail{
+  width:100% !important;
+  aspect-ratio:1/1;
+  margin:0 !important;
+  overflow:hidden;
+  border-radius:10px;
+  background:#f1f5f9;
+  border:1px solid var(--lc-border);
+}
+.photo-gallery-thumbnail-image{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  display:block;
+}
+@media(min-width:640px){
+  .photo-gallery-thumbnail-list{ grid-template-columns:repeat(6,1fr); }
+}
+
+/* Gallery count with stars (injected via JS as .lc-gallery-count) */
+.lc-gallery-count{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  margin:12px auto 4px;padding:6px 10px;
+  font-family:var(--lc-font);font-weight:700;color:var(--lc-text);
+  width:100%;font-size:15px;
+}
+.lc-gallery-count .lc-stars{
+  color:#FAB400;letter-spacing:1px;font-size:16px;line-height:1;
+}
+
+/* ---------- Trustvox reviews cleanup ---------- */
+.legobrasil-trustvox-0-x-trustvoxContainer{ overflow:hidden; }
+.trustvox-widget, .ts-product-reviews{
+  font-family:var(--lc-font);
+  color:var(--lc-text);
+}
+
+/* Overview: side-by-side on desktop, stacked on mobile with breathing room */
+.ts-product-reviews-flex{
+  display:flex;flex-direction:column;gap:16px;padding:12px;
+}
+.side-review-container{
+  background:#fff;border:1px solid var(--lc-border);border-radius:12px;
+  padding:16px;
+}
+.ts-rating-summary{
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  text-align:center;margin-bottom:14px;
+}
+.ts-v-rating-note{
+  display:flex;align-items:baseline;justify-content:center;gap:4px;
+  font-weight:800;font-size:34px;color:var(--lc-text);line-height:1;
+}
+.ts-v-rating-note_of{ font-size:16px;color:var(--lc-muted);font-weight:600; }
+.ts-rating-title{ display:flex;justify-content:center; }
+.ts-rating-title p{ font-size:13px;color:var(--lc-muted);margin:4px 0 0; }
+
+/* Histogram bars: contain to 5 rows, aligned neatly */
+.ts-rating-histogram{
+  display:flex;flex-direction:column;gap:6px;margin-top:6px;
+}
+.ts-rating-row{
+  display:grid !important;
+  grid-template-columns:32px 1fr;
+  align-items:center;gap:10px;
+  min-height:18px;
+}
+.ts-rating-row .ts-star{
+  display:inline-flex !important;align-items:center;gap:3px;
+  font-size:12px;font-weight:700;color:var(--lc-muted);
+}
+.ts-rating-row .ts-star svg{ width:12px;height:12px; }
+.ts-bar{
+  background:#eef2f6;border-radius:999px;height:8px;overflow:hidden;width:100%;
+}
+.ts-fill{ background:#FAB400;height:100%;border-radius:999px; }
+
+/* Recommendation block */
+.ts-product-reviews-overview-recommendations{ margin-top:12px; }
+.ts-v-recommendations{
+  display:flex;align-items:center;gap:12px;
+  background:#F8FAFC;border-radius:10px;padding:10px 12px;
+}
+.ts-v-recommendations_percentage{ width:52px;height:52px;flex-shrink:0; }
+.ts-v-percentage-circle{ width:52px !important;height:52px !important; }
+.ts-v-percentage-label{
+  position:absolute;font-weight:800;font-size:12px;color:var(--lc-text);
+}
+.ts-v-recommendations_text{
+  font-size:13px;color:var(--lc-text);line-height:1.35;
+}
+
+/* Footer (RA icon) */
+.ts-v-footer{ padding:12px;font-size:12px;color:var(--lc-muted); }
+.ts-v-footer-icon{ width:16px;height:16px;vertical-align:middle; }
+.ts-v-footer-logo{ height:14px;vertical-align:middle; }
+
+/* Reviews list */
+.ts-product-reviews-list{ padding:0 12px 16px; }
+.ts-header{ padding:8px 0; }
+.ts-reviews-list{
+  list-style:none;margin:0;padding:0;
+  display:flex;flex-direction:column;gap:12px;
+}
+.ts-product-reviews-list-item{
+  background:#fff;border:1px solid var(--lc-border);border-radius:12px;
+  padding:14px;list-style:none;
+}
+.ts-block-one{ margin-bottom:8px; }
+.ts-rating{
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;gap:8px 12px;
+}
+.ts-rating-number{ display:none; }
+.ts-user{
+  display:flex;align-items:center;gap:10px;min-width:0;
+  grid-column:1;
+}
+.ts-avatar{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--lc-yellow);color:var(--lc-text);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:14px;flex-shrink:0;
+}
+.ts-avatar p{ margin:0; }
+.ts-value-title{
+  display:flex;flex-direction:column;min-width:0;
+  font-size:14px;font-weight:700;color:var(--lc-text);line-height:1.2;
+}
+.ts-value-shopping-verify{
+  font-size:11px;font-weight:600;color:#059669;margin-top:2px;
+}
+.ts-text-date{
+  grid-column:2;font-size:12px;color:var(--lc-muted);white-space:nowrap;
+}
+
+/* Star row per review — cap to 5 stars */
+.ts-block-two{ margin-top:4px; }
+.ts-stars-opinion{ display:flex;align-items:center;gap:8px;flex-wrap:wrap; }
+.ts-v-stars{
+  position:relative;display:inline-block;line-height:0;
+  width:auto;
+}
+.ts-v-stars__container,
+.ts-v-stars-foreground{
+  display:inline-flex !important;gap:2px;
+}
+.ts-v-stars svg{ width:16px;height:16px; }
+.ts-v-stars-foreground{
+  position:absolute;top:0;left:0;overflow:hidden;
+  max-width:100%;
+}
+
+/* Review body text */
+.ts-product-reviews-list-item p,
+.ts-product-reviews-list-item span{
+  font-size:14px;line-height:1.5;color:var(--lc-text);
+}
+
+/* Aggressive: hide legacy/duplicated blocks that stack visually on mobile */
+.ts-product-reviews-list-item .ts-block-one .ts-rating > *:not(.ts-user):not(.ts-text-date){
+  display:none;
+}
+
+@media(max-width:640px){
+  .ts-v-rating-note{ font-size:28px; }
+  .ts-rating-row{ grid-template-columns:28px 1fr; }
+  .ts-product-reviews-list-item{ padding:12px; }
+  .ts-value-title{ font-size:13px; }
+}
+
+/* Make sure Finalizar Compra button is clickable */
+.lc-checkout{ cursor:pointer; }
+
+/* ==========================================================
+   v7 HARDENING — beats template's !important with higher
+   specificity + own !important. Mobile-first.
+   ========================================================== */
+
+/* --- Customer photo gallery: force 3-up grid on mobile, 6-up on desktop --- */
+.legobrasil-trustvox-0-x-trustvoxContainer .photo-gallery-thumbnail-list,
+.photo-gallery-section .photo-gallery-thumbnail-list,
+.photo-gallery-thumbnail-list{
+  display:grid !important;
+  grid-template-columns:repeat(3, minmax(0,1fr)) !important;
+  gap:10px !important;
+  width:100% !important;
+  max-width:640px !important;
+  margin:0 !important;
+  padding:0 !important;
+  list-style:none !important;
+  float:none !important;
+}
+.legobrasil-trustvox-0-x-trustvoxContainer .photo-gallery-thumbnail,
+.photo-gallery-section .photo-gallery-thumbnail,
+.photo-gallery-thumbnail{
+  width:100% !important;
+  height:auto !important;
+  aspect-ratio:1/1 !important;
+  margin:0 !important;
+  padding:0 !important;
+  overflow:hidden !important;
+  border-radius:10px !important;
+  background:#f1f5f9 !important;
+  border:1px solid var(--lc-border) !important;
+  float:none !important;
+  display:block !important;
+}
+.legobrasil-trustvox-0-x-trustvoxContainer .photo-gallery-thumbnail-image,
+.photo-gallery-section .photo-gallery-thumbnail-image,
+.photo-gallery-thumbnail-image{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  display:block !important;
+}
+@media(min-width:640px){
+  .legobrasil-trustvox-0-x-trustvoxContainer .photo-gallery-thumbnail-list,
+  .photo-gallery-section .photo-gallery-thumbnail-list,
+  .photo-gallery-thumbnail-list{
+    grid-template-columns:repeat(6, minmax(0,1fr)) !important;
+  }
+}
+
+/* --- ★★★★★ (92) — injected badge, centered, aligned baseline --- */
+.lc-gallery-count{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:8px !important;
+  margin:14px auto 4px !important;
+  padding:0 !important;
+  font-family:var(--lc-font) !important;
+  font-weight:800 !important;
+  color:var(--lc-text) !important;
+  font-size:16px !important;
+  text-align:center !important;
+}
+.lc-gallery-count .lc-stars{
+  color:#FAB400 !important;
+  letter-spacing:2px !important;
+  font-size:18px !important;
+  line-height:1 !important;
+}
+.lc-gallery-count .lc-num{
+  color:var(--lc-text) !important;
+  font-weight:800 !important;
+}
+
+/* --- Trustvox reviews: hide any legacy star row that pushes to >5 stars --- */
+.legobrasil-trustvox-0-x-trustvoxContainer .ts-v-stars .ts-v-star ~ .ts-v-star ~ .ts-v-star ~ .ts-v-star ~ .ts-v-star ~ .ts-v-star{
+  display:none !important;
+}
+/* Cap ts-v-stars to exactly 5 icons wide */
+.legobrasil-trustvox-0-x-trustvoxContainer .ts-v-stars,
+.ts-v-stars{
+  max-width:calc(18px * 5 + 4px * 4) !important;
+  overflow:hidden !important;
+  white-space:nowrap !important;
+}
+.legobrasil-trustvox-0-x-trustvoxContainer .ts-v-stars__container,
+.legobrasil-trustvox-0-x-trustvoxContainer .ts-v-stars-foreground,
+.ts-v-stars__container,
+.ts-v-stars-foreground{
+  display:inline-flex !important;
+  gap:4px !important;
+  flex-wrap:nowrap !important;
+}
+.legobrasil-trustvox-0-x-trustvoxContainer .ts-v-stars svg,
+.ts-v-stars svg{
+  width:18px !important;
+  height:18px !important;
+  flex:0 0 auto !important;
+}
+
+/* Per-review card: kill stacked/duplicated blocks, keep tidy grid */
+.legobrasil-trustvox-0-x-trustvoxContainer .ts-product-reviews-list-item{
+  background:#fff !important;
+  border:1px solid var(--lc-border) !important;
+  border-radius:12px !important;
+  padding:14px !important;
+  margin:0 0 12px !important;
+  list-style:none !important;
+  display:block !important;
+}
+.legobrasil-trustvox-0-x-trustvoxContainer .ts-product-reviews-list-item .ts-rating{
+  display:grid !important;
+  grid-template-columns:1fr auto !important;
+  gap:6px 12px !important;
+  align-items:center !important;
+}
+.legobrasil-trustvox-0-x-trustvoxContainer .ts-product-reviews-list-item .ts-rating-number,
+.legobrasil-trustvox-0-x-trustvoxContainer .ts-product-reviews-list-item .ts-rating-text{
+  display:none !important;
+}
+.legobrasil-trustvox-0-x-trustvoxContainer .ts-product-reviews-list-item .ts-user{
+  display:flex !important;
+  align-items:center !important;
+  gap:10px !important;
+  min-width:0 !important;
+  grid-column:1 !important;
+}
+.legobrasil-trustvox-0-x-trustvoxContainer .ts-product-reviews-list-item .ts-text-date{
+  grid-column:2 !important;
+  font-size:12px !important;
+  color:var(--lc-muted) !important;
+  white-space:nowrap !important;
+}
+.legobrasil-trustvox-0-x-trustvoxContainer .ts-product-reviews-list-item .ts-block-two{
+  margin-top:8px !important;
+}
+.legobrasil-trustvox-0-x-trustvoxContainer .ts-product-reviews-list-item .ts-stars-opinion{
+  display:flex !important;
+  align-items:center !important;
+  gap:8px !important;
+  flex-wrap:wrap !important;
+}
+
+/* Mobile fine-tuning */
+@media(max-width:480px){
+  .legobrasil-trustvox-0-x-trustvoxContainer .photo-gallery-thumbnail-list,
+  .photo-gallery-thumbnail-list{
+    grid-template-columns:repeat(3, minmax(0,1fr)) !important;
+    gap:8px !important;
+  }
+  .lc-gallery-count{ font-size:15px !important; }
+  .lc-gallery-count .lc-stars{ font-size:17px !important; letter-spacing:1.5px !important; }
+}
+
+/* v7.1 — fix star overlay distortion inside each review card.
+   Trustvox renders 2 layers: base (outlined) + foreground (filled, clipped).
+   The clipped foreground gets distorted at our target size. We keep only the
+   filled foreground row, force it to exactly 5 stars, and hide the base. */
+.legobrasil-trustvox-0-x-trustvoxContainer .ts-product-reviews-list-item .ts-v-stars,
+.ts-product-reviews-list-item .ts-v-stars{
+  position:relative !important;
+  display:inline-block !important;
+  width:auto !important;
+  max-width:none !important;
+  overflow:visible !important;
+  line-height:0 !important;
+}
+.legobrasil-trustvox-0-x-trustvoxContainer .ts-product-reviews-list-item .ts-v-stars .ts-v-stars__container,
+.ts-product-reviews-list-item .ts-v-stars .ts-v-stars__container{
+  display:none !important;
+}
+.legobrasil-trustvox-0-x-trustvoxContainer .ts-product-reviews-list-item .ts-v-stars .ts-v-stars-foreground,
+.ts-product-reviews-list-item .ts-v-stars .ts-v-stars-foreground{
+  position:static !important;
+  display:inline-flex !important;
+  gap:3px !important;
+  overflow:visible !important;
+  max-width:none !important;
+  width:auto !important;
+  clip-path:none !important;
+}
+.legobrasil-trustvox-0-x-trustvoxContainer .ts-product-reviews-list-item .ts-v-stars svg,
+.ts-product-reviews-list-item .ts-v-stars svg{
+  width:16px !important;
+  height:16px !important;
+  flex:0 0 16px !important;
+}
+/* Cap to exactly first 5 stars in the foreground row, hide extras */
+.ts-product-reviews-list-item .ts-v-stars .ts-v-stars-foreground svg:nth-of-type(n+6){
+  display:none !important;
+}
+/* Fill all visible stars with the brand yellow, regardless of the linearGradient */
+.ts-product-reviews-list-item .ts-v-stars .ts-v-stars-foreground svg path{
+  fill:#FAB400 !important;
+  stroke:#E0A200 !important;
+  stroke-width:1 !important;
+}
+
+/* Name + "Compra Verificada" side by side (not stacked) */
+.legobrasil-trustvox-0-x-trustvoxContainer .ts-product-reviews-list-item .ts-value-title{
+  display:flex !important;
+  flex-direction:column !important;
+  min-width:0 !important;
+  gap:2px !important;
+}
+.legobrasil-trustvox-0-x-trustvoxContainer .ts-product-reviews-list-item .ts-value-title > span:first-child{
+  font-size:14px !important;
+  font-weight:700 !important;
+  color:var(--lc-text) !important;
+  line-height:1.2 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+.legobrasil-trustvox-0-x-trustvoxContainer .ts-product-reviews-list-item .ts-value-shopping-verify{
+  font-size:11px !important;
+  font-weight:600 !important;
+  color:#059669 !important;
+  white-space:nowrap !important;
+}
+
+/* v10.1 — side rating summary cleanup.
+   Root cause: `.side-review-container` renders a duplicated rating summary
+   (big "5", a second star row and a "(N)" count that conflicts with the
+   badge shown next to the gallery header), on top of the histogram + the
+   "100% dos clientes recomendam" panel. The summary block is redundant
+   with the injected `.lc-gallery-count` badge, so hide it and keep only
+   the histogram + recommendation panel. */
+.side-review-container .ts-rating-summary,
+.side-review-container .ts-v-rating-note,
+.side-review-container .ts-rating-title{
+  display:none !important;
+}
+.side-review-container .ts-rating-histogram{ margin-top:0 !important; }
+
+/* ---------- v2 additions: fast-shipping progress + add-more modal ---------- */
+.lc-progress-wrap { padding:14px 16px 4px; border-bottom:1px solid #eef2f7; background:#f8fafc; }
+.lc-progress-text { font-size:13px; color:#0f172a; margin-bottom:8px; line-height:1.35; }
+.lc-progress-text strong { color:#DA291C; }
+.lc-progress { height:10px; background:#e2e8f0; border-radius:999px; overflow:hidden; }
+.lc-progress-bar { height:100%; width:0%; background:linear-gradient(90deg,#f5a623,#DA291C); border-radius:999px; transition:width .35s ease; }
+.lc-progress-bar.lc-progress-done { background:linear-gradient(90deg,#059669,#10b981); }
+.lc-add-more { width:100%; margin-top:10px; padding:11px 12px; border:1.5px dashed #DA291C; background:#fff5f5; color:#DA291C; font-weight:700; border-radius:10px; cursor:pointer; font-size:13.5px; }
+.lc-add-more:hover { background:#DA291C; color:#fff; }
+
+.lc-modal-overlay { position:fixed; inset:0; background:rgba(15,23,42,.55); display:none; align-items:flex-start; justify-content:center; padding:5vh 16px; z-index:2147483400; overflow:auto; }
+.lc-modal-overlay.lc-open { display:flex; }
+.lc-modal { background:#fff; width:100%; max-width:520px; border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,.25); overflow:hidden; animation:lcModalIn .25s ease; }
+@keyframes lcModalIn { from{transform:translateY(20px);opacity:0} to{transform:none;opacity:1} }
+.lc-modal-head { display:flex; align-items:center; justify-content:space-between; padding:14px 18px; border-bottom:1px solid #eef2f7; }
+.lc-modal-head h3 { margin:0; font-size:16px; }
+.lc-modal-close { background:none; border:0; font-size:28px; line-height:1; cursor:pointer; color:#64748b; }
+.lc-modal-sub { padding:10px 18px 6px; margin:0; color:#475569; font-size:13px; }
+.lc-modal-list { padding:8px 12px 16px; max-height:60vh; overflow:auto; }
+.lc-modal-item { display:grid; grid-template-columns:60px 1fr auto; gap:12px; align-items:center; padding:10px; border-bottom:1px solid #f1f5f9; }
+.lc-modal-item img { width:60px; height:60px; object-fit:contain; background:#f8fafc; border-radius:8px; }
+.lc-modal-name { font-size:13.5px; font-weight:600; color:#0f172a; margin-bottom:4px; }
+.lc-modal-price { display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:13px; }
+.lc-modal-old { color:#94a3b8; text-decoration:line-through; }
+.lc-modal-new { color:#DA291C; font-weight:800; font-size:15px; }
+.lc-modal-tag { background:#DA291C; color:#fff; font-size:10.5px; font-weight:700; padding:2px 6px; border-radius:6px; }
+.lc-modal-add { background:#DA291C; color:#fff; border:0; padding:10px 14px; border-radius:8px; font-weight:700; cursor:pointer; font-size:13px; }
+.lc-modal-add:hover { background:#a91d13; }
+.lc-modal-empty { padding:24px; text-align:center; color:#64748b; }
+
+/* ============ v3 additions ============ */
+
+/* Add-More modal — details/actions buttons */
+.lc-modal-item { display:flex; gap:12px; align-items:flex-start; padding:12px; border:1px solid #e5e7eb; border-radius:12px; margin-bottom:10px; }
+.lc-modal-item img { width:64px; height:64px; object-fit:cover; border-radius:8px; flex:0 0 auto; background:#f1f5f9; }
+.lc-modal-info { flex:1 1 auto; min-width:0; }
+.lc-modal-name { font-weight:600; font-size:14px; color:#0f172a; }
+.lc-modal-price { display:flex; gap:8px; align-items:center; margin-top:4px; flex-wrap:wrap; }
+.lc-modal-old { color:#94a3b8; text-decoration:line-through; font-size:12px; }
+.lc-modal-new { color:#059669; font-weight:800; font-size:15px; }
+.lc-modal-tag { background:#dcfce7; color:#065f46; font-size:10px; font-weight:800; padding:2px 6px; border-radius:6px; }
+.lc-modal-meta { font-size:11px; color:#64748b; margin-top:4px; }
+.lc-stars { color:#f59e0b; letter-spacing:1px; }
+.lc-modal-btns { display:flex; flex-direction:column; gap:6px; align-items:stretch; flex:0 0 auto; }
+.lc-modal-inspect { background:#fff; border:1px solid #cbd5e1; color:#334155; font-weight:600; font-size:12px; border-radius:8px; padding:8px 10px; cursor:pointer; }
+.lc-modal-inspect:hover { background:#f1f5f9; }
+.lc-modal-add { background:#DA291C; color:#fff; border:0; font-weight:700; font-size:12px; border-radius:8px; padding:8px 12px; cursor:pointer; }
+.lc-modal-add:hover { background:#b91d10; }
+
+/* Slide cart item details button */
+.lc-item-details { background:none; border:0; color:#2563eb; font-size:12px; font-weight:600; padding:0; margin-top:4px; cursor:pointer; text-decoration:underline; }
+
+/* Details modal (product inspect) */
+.lc-details-overlay { position:fixed; inset:0; background:rgba(15,23,42,.6); z-index:2147483647; display:none; align-items:center; justify-content:center; padding:16px; }
+.lc-details-overlay.lc-open { display:flex; }
+.lc-details { background:#fff; border-radius:16px; max-width:720px; width:100%; max-height:92vh; overflow:auto; position:relative; box-shadow:0 20px 60px rgba(0,0,0,.35); display:grid; grid-template-columns: 1fr 1fr; gap:0; }
+@media (max-width:720px) { .lc-details { grid-template-columns:1fr; max-height:95vh; } }
+.lc-d-close { position:absolute; top:8px; right:8px; z-index:2; background:rgba(255,255,255,.9); border:0; width:32px; height:32px; border-radius:50%; font-size:22px; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.15); }
+.lc-d-carousel { position:relative; background:#f8fafc; min-height:240px; display:flex; align-items:center; justify-content:center; }
+.lc-d-carousel img { max-width:100%; max-height:400px; object-fit:contain; display:none; padding:16px; }
+.lc-d-carousel img.active { display:block; }
+.lc-d-nav { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,.9); border:0; width:32px; height:32px; border-radius:50%; font-size:20px; cursor:pointer; }
+.lc-d-prev { left:8px; } .lc-d-next { right:8px; }
+.lc-d-dots { position:absolute; bottom:8px; left:50%; transform:translateX(-50%); display:flex; gap:6px; }
+.lc-d-dots span { width:8px; height:8px; border-radius:50%; background:#cbd5e1; cursor:pointer; }
+.lc-d-dots span.on { background:#0f172a; }
+.lc-d-body { padding:20px; display:flex; flex-direction:column; gap:10px; }
+.lc-d-name { font-size:18px; font-weight:800; color:#0f172a; }
+.lc-d-rating { font-size:13px; color:#475569; display:flex; gap:6px; align-items:center; }
+.lc-d-price { font-size:16px; }
+.lc-d-old { color:#94a3b8; text-decoration:line-through; margin-right:8px; }
+.lc-d-new { color:#059669; font-weight:800; font-size:20px; }
+.lc-d-tag { background:#dcfce7; color:#065f46; font-size:11px; font-weight:800; padding:2px 6px; border-radius:6px; margin-left:6px; }
+.lc-d-desc { font-size:13px; color:#334155; line-height:1.5; margin:8px 0 0; }
+.lc-d-specs { list-style:none; padding:0; margin:8px 0; display:flex; gap:12px; flex-wrap:wrap; font-size:12px; color:#475569; }
+.lc-d-specs li { background:#f1f5f9; padding:6px 10px; border-radius:8px; }
+.lc-d-actions { margin-top:auto; }
+.lc-d-add { width:100%; background:#DA291C; color:#fff; border:0; padding:12px; font-weight:800; font-size:14px; border-radius:10px; cursor:pointer; }
+.lc-d-add:hover { background:#b91d10; }
