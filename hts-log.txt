@@ -1,0 +1,99 @@
+HTTrack3.51-0 launched on Wed, 04 Nov 2026 14:53:07 at https://www.legobr.site/ +*.png +*.gif +*.jpg +*.jpeg +*.webp +*.avif +*.svg +*.css +*.js +*.woff2 +*.woff +*.ttf +*.otf +*.mp4 +*.webm -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2%f#f -F "Mozilla/5.0 (compatible; HTTrack/3.x; +https://www.httrack.com/)" -%F "<!-- Mirrored from {url} by HTTrack Website Copier/3.x [XR&CO], {date} -->" -%l "pt_BR, en, *" https://www.legobr.site/ -O1 "C:\Meus Sites\LEGO  NOVEMBER" +*.png +*.gif +*.jpg +*.jpeg +*.webp +*.avif +*.svg +*.css +*.js +*.woff2 +*.woff +*.ttf +*.otf +*.mp4 +*.webm -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+15:02:12	Warning: 	File not parsed, looks like binary: https://www.legobr.site/js/recaptcha__pt_br.js
+15:02:12	Warning: 	Warning: store application/octet-stream without scan: C:/Meus Sites/LEGO  NOVEMBER/www.legobr.site/js/recaptcha__pt_br.js
+15:02:23	Error: 	"Not Found" (404) at link https://api.legostore.com.br/gtm.js?id= (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:23	Error: 	"Not Found" (404) at link https://www.legobr.site/vendor-list.json (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:23	Error: 	"Not Found" (404) at link https://www.legobr.site/archives/vendor-list-v[VERSION].json (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:23	Error: 	"Not Found" (404) at link https://www.legobr.site/purposes-[LANG].json (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:28	Error: 	"Not Found" (404) at link https://www.legobr.site/c.clarity.ms (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:28	Error: 	"Not Found" (404) at link https://www.legobr.site/clarity.ms (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:28	Error: 	"Not Found" (404) at link https://targeting.voxus.com.br/clients/1015289.js?v=2215400 (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:28	Error: 	"Not Found" (404) at link https://www.legobr.site/injector.js?website_code= (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:28	Error: 	"Bad Request" (400) at link https://www.googletagmanager.com/gtm.js?id= (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:28	Error: 	"Not Found" (404) at link https://www.legobr.site/register.js?gad_source=1&gad_campaignid=1599671481&gclid=Cj0KCQjwgvnCBhCqARIsADBLZoI5mOXVLFo3LotTfDnjRHv78YN2LORVtiYasuq0TLIDXgLOp1FEzwIaAidHEALw_wcB&scope= (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:31	Error: 	"Not Found" (404) at link https://www.legobr.site/images/pg-2.png (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:31	Error: 	"Not Found" (404) at link https://www.legobr.site/images/pg-8.png (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:31	Error: 	"Not Found" (404) at link https://www.legobr.site/images/pg-7.png (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:31	Error: 	"Not Found" (404) at link https://www.legobr.site/images/pg-12.png (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:31	Error: 	"Not Found" (404) at link https://www.legobr.site/images/pg-4.png (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:31	Error: 	"Not Found" (404) at link https://www.legobr.site/images/pg-11.png (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:31	Error: 	"Not Found" (404) at link https://www.legobr.site/images/pg-6.png (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:31	Error: 	"Not Found" (404) at link https://www.legobr.site/images/pg-14.png (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:31	Error: 	"Not Found" (404) at link https://www.legobr.site/images/pg-3.png (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:31	Error: 	"Not Found" (404) at link https://www.legobr.site/temas/editions (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:31	Error: 	"Not Found" (404) at link https://www.legobr.site/institucional/politica-de-privacidade (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:31	Error: 	"Not Found" (404) at link https://www.legobr.site/politica-de-cookie (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:31	Error: 	"Not Found" (404) at link https://www.legobr.site/institucional/aviso-legal (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:31	Error: 	"Not Found" (404) at link https://www.legobr.site/institucional/termos-e-condicoes-de-uso (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:31	Error: 	"Not Found" (404) at link https://www.legobr.site/institucional/acessibilidade (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:46	Warning: 	Permanent Redirect for https://www.legobr.site/vtex.keep-alive. No defined endpoints to keep alive. You can configure them in /admin/apps/
+15:02:46	Warning: 	File has moved from https://www.legobr.site/vtex.keep-alive. No defined endpoints to keep alive. You can configure them in /admin/apps/ to /vtex.keep-alive.%20No%20defined%20endpoints%20to%20keep%20alive.%20You%20can%20configure%20them%20in%20/admin/apps
+15:02:49	Info: 	Retry after error -4 (Connect Error) at link cdn.dsspn.com/trk/v1.1/pixel.min.js?c=0f73f570-7328-422a-8793-e691fa1c1fa4&e=0&n=Legostore&cb= (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:57	Error: 	"Not Found" (404) at link https://www.legobr.site/harry?map=ft&_q=harry (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:57	Error: 	"Not Found" (404) at link https://www.legobr.site/ferrari?map=ft&_q=ferrari (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:57	Error: 	"Not Found" (404) at link https://www.legobr.site/simpsons?map=ft&_q=simpsons (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:02:57	Error: 	"Not Found" (404) at link https://www.legobr.site/images/reviews/43014-r1.jpg (from https://www.legobr.site/43014-lego-editions-capacete-scuderia-ferraria-hp-charles-leclerc)
+15:02:57	Error: 	"Not Found" (404) at link https://www.legobr.site/images/reviews/43014-r2.jpg (from https://www.legobr.site/43014-lego-editions-capacete-scuderia-ferraria-hp-charles-leclerc)
+15:02:57	Error: 	"Not Found" (404) at link https://www.legobr.site/images/reviews/43023-r1.jpg (from https://www.legobr.site/43023-lego-editions-capacete-lando-norris-da-equipe-mclaren-mastercard-f1)
+15:02:57	Error: 	"Not Found" (404) at link https://www.legobr.site/images/reviews/43023-r2.jpg (from https://www.legobr.site/43023-lego-editions-capacete-lando-norris-da-equipe-mclaren-mastercard-f1)
+15:02:57	Error: 	"Not Found" (404) at link https://www.legobr.site/images/reviews/43017-r1.jpg (from https://www.legobr.site/43017-lego-editions-capacete-oscar-piastri-da-equipe-mclaren-mastercard)
+15:02:57	Error: 	"Not Found" (404) at link https://www.legobr.site/images/reviews/43017-r2.jpg (from https://www.legobr.site/43017-lego-editions-capacete-oscar-piastri-da-equipe-mclaren-mastercard)
+15:02:57	Warning: 	Warning: store unknown/unknown without scan: C:/Meus Sites/LEGO  NOVEMBER/cdn.dsspn.com/trk/pix70d1.html
+15:02:58	Error: 	"Not Found" (404) at link https://www.legobr.site/gtm.js (from https://www.legobr.site/js/gtm.js)
+15:02:58	Warning: 	Permanent Redirect for https://www.legobr.site/signals/config/
+15:02:58	Warning: 	File has moved from https://www.legobr.site/signals/config/ to /signals/config
+15:02:59	Warning: 	Permanent Redirect for https://www.legobr.site/signals/plugins/
+15:02:59	Warning: 	File has moved from https://www.legobr.site/signals/plugins/ to /signals/plugins
+15:02:59	Error: 	"Not Found" (404) at link https://www.legobr.site/signals/iwl.js (from https://www.legobr.site/js/fbevents.js)
+15:02:59	Error: 	"Not Found" (404) at link https://www.legobr.site/signals/iwl.js?pixel_id= (from https://www.legobr.site/js/fbevents.js)
+15:02:59	Error: 	"Not Found" (404) at link https://www.legobr.site/images/icon-arrow-black___7f2e46a….svg (from https://www.legobr.site/css/legobrasil.dup-template%401.26.0%24overrides.css)
+15:02:59	Warning: 	Warning: store unknown/unknown without scan: C:/Meus Sites/LEGO  NOVEMBER/cdn.dsspn.com/trk/pix13c3.html
+15:02:59	Error: 	"Not Found" (404) at link https://www.legobr.site/com.pl (from https://www.legobr.site/js/30511.js)
+15:02:59	Error: 	"Not Found" (404) at link https://www.legobr.site/biz.pl (from https://www.legobr.site/js/30511.js)
+15:02:59	Error: 	"Not Found" (404) at link https://www.legobr.site/net.pl (from https://www.legobr.site/js/30511.js)
+15:02:59	Error: 	"Not Found" (404) at link https://www.legobr.site/com.au (from https://www.legobr.site/js/30511.js)
+15:02:59	Error: 	"Not Found" (404) at link https://www.legobr.site/com.tr (from https://www.legobr.site/js/30511.js)
+15:02:59	Warning: 	Permanent Redirect for https://www.legobr.site/_v/public/assets/v1/published/
+15:02:59	Warning: 	File has moved from https://www.legobr.site/_v/public/assets/v1/published/ to /_v/public/assets/v1/published
+15:03:00	Warning: 	Permanent Redirect for https://www.legobr.site/public/react/
+15:03:00	Warning: 	File has moved from https://www.legobr.site/public/react/ to /public/react
+15:03:00	Error: 	"Not Found" (404) at link https://www.legobr.site/Promise based HTTP client for the browser and node.js (from https://legobrasil.vtexassets.com/_v/public/assets/v1/published/bundle/public/react/asset.min.js?v=1&files=vtex.render-runtime@8.134.2,ExtensionContainer&files=vtex.admin-pages@4.53.1,common,6,18,HighlightOverlay&files=vtex.request-capture@2.3.0,index&files=vtex.facebook-fbe@1.8.4,common,1,FbePixel&files=vtex.google-tag-manager@3.5.2,index&files=vtex.sae-analytics@2.13.0,common,0,index&async=2&workspace=master)
+15:03:00	Error: 	"Not Found" (404) at link https://www.legobr.site/index.js (from https://legobrasil.vtexassets.com/_v/public/assets/v1/published/bundle/public/react/asset.min.js?v=1&files=vtex.render-runtime@8.134.2,ExtensionContainer&files=vtex.admin-pages@4.53.1,common,6,18,HighlightOverlay&files=vtex.request-capture@2.3.0,index&files=vtex.facebook-fbe@1.8.4,common,1,FbePixel&files=vtex.google-tag-manager@3.5.2,index&files=vtex.sae-analytics@2.13.0,common,0,index&async=2&workspace=master)
+15:03:00	Error: 	"Not Found" (404) at link https://www.legobr.site/node ./sandbox/server.js (from https://legobrasil.vtexassets.com/_v/public/assets/v1/published/bundle/public/react/asset.min.js?v=1&files=vtex.render-runtime@8.134.2,ExtensionContainer&files=vtex.admin-pages@4.53.1,common,6,18,HighlightOverlay&files=vtex.request-capture@2.3.0,index&files=vtex.facebook-fbe@1.8.4,common,1,FbePixel&files=vtex.google-tag-manager@3.5.2,index&files=vtex.sae-analytics@2.13.0,common,0,index&async=2&workspace=master)
+15:03:00	Error: 	"Not Found" (404) at link https://www.legobr.site/npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json (from https://legobrasil.vtexassets.com/_v/public/assets/v1/published/bundle/public/react/asset.min.js?v=1&files=vtex.render-runtime@8.134.2,ExtensionContainer&files=vtex.admin-pages@4.53.1,common,6,18,HighlightOverlay&files=vtex.request-capture@2.3.0,index&files=vtex.facebook-fbe@1.8.4,common,1,FbePixel&files=vtex.google-tag-manager@3.5.2,index&files=vtex.sae-analytics@2.13.0,common,0,index&async=2&workspace=master)
+15:03:00	Error: 	"Not Found" (404) at link https://www.legobr.site/node ./examples/server.js (from https://legobrasil.vtexassets.com/_v/public/assets/v1/published/bundle/public/react/asset.min.js?v=1&files=vtex.render-runtime@8.134.2,ExtensionContainer&files=vtex.admin-pages@4.53.1,common,6,18,HighlightOverlay&files=vtex.request-capture@2.3.0,index&files=vtex.facebook-fbe@1.8.4,common,1,FbePixel&files=vtex.google-tag-manager@3.5.2,index&files=vtex.sae-analytics@2.13.0,common,0,index&async=2&workspace=master)
+15:03:00	Error: 	"Not Found" (404) at link https://www.legobr.site/cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js (from https://legobrasil.vtexassets.com/_v/public/assets/v1/published/bundle/public/react/asset.min.js?v=1&files=vtex.render-runtime@8.134.2,ExtensionContainer&files=vtex.admin-pages@4.53.1,common,6,18,HighlightOverlay&files=vtex.request-capture@2.3.0,index&files=vtex.facebook-fbe@1.8.4,common,1,FbePixel&files=vtex.google-tag-manager@3.5.2,index&files=vtex.sae-analytics@2.13.0,common,0,index&async=2&workspace=master)
+15:03:00	Error: 	"Not Found" (404) at link https://www.legobr.site/dist/axios.min.js (from https://legobrasil.vtexassets.com/_v/public/assets/v1/published/bundle/public/react/asset.min.js?v=1&files=vtex.render-runtime@8.134.2,ExtensionContainer&files=vtex.admin-pages@4.53.1,common,6,18,HighlightOverlay&files=vtex.request-capture@2.3.0,index&files=vtex.facebook-fbe@1.8.4,common,1,FbePixel&files=vtex.google-tag-manager@3.5.2,index&files=vtex.sae-analytics@2.13.0,common,0,index&async=2&workspace=master)
+15:03:00	Error: 	"Not Found" (404) at link https://www.legobr.site/index.d.ts (from https://legobrasil.vtexassets.com/_v/public/assets/v1/published/bundle/public/react/asset.min.js?v=1&files=vtex.render-runtime@8.134.2,ExtensionContainer&files=vtex.admin-pages@4.53.1,common,6,18,HighlightOverlay&files=vtex.request-capture@2.3.0,index&files=vtex.facebook-fbe@1.8.4,common,1,FbePixel&files=vtex.google-tag-manager@3.5.2,index&files=vtex.sae-analytics@2.13.0,common,0,index&async=2&workspace=master)
+15:03:00	Error: 	"Not Found" (404) at link https://www.gstatic.com/recaptcha/releases/2sJvksnKlEApLvJt2btz_q7n/recaptcha__pt_br.js (from https://www.legobr.site/js/enterprise.js)
+15:03:00	Warning: 	Permanent Redirect for https://www.legobr.site/checkout/
+15:03:00	Warning: 	File has moved from https://www.legobr.site/checkout/ to /checkout
+15:03:00	Warning: 	Permanent Redirect for https://www.legobr.site/pub/saml/
+15:03:00	Warning: 	File has moved from https://www.legobr.site/pub/saml/ to /pub/saml
+15:03:01	Warning: 	Permanent Redirect for https://www.legobr.site/refreshtoken/
+15:03:01	Warning: 	File has moved from https://www.legobr.site/refreshtoken/ to /refreshtoken
+15:03:01	Error: 	"Not Found" (404) at link https://www.legobr.site/pwa/manifest.json (from https://www.legobr.site/js/asset-edc5e96500010b858675030b2fe581104ea0f571.min.js)
+15:03:01	Warning: 	Permanent Redirect for https://www.legobr.site/arquivos/ids/
+15:03:01	Warning: 	File has moved from https://www.legobr.site/arquivos/ids/ to /arquivos/ids
+15:03:02	Error: 	"Not Found" (404) at link https://www.legobr.site/vtex.keep-alive. No defined endpoints to keep alive. You can configure them in /admin/apps (from https://www.legobr.site/vtex.keep-alive. No defined endpoints to keep alive. You can configure them in /admin/apps/)
+15:03:02	Info: 	Retry after error -4 (Connect Error) at link cdn.dsspn.com/trk/v1.1/pixel.min.js?c=0f73f570-7328-422a-8793-e691fa1c1fa4&e=0&n=Legostore&cb= (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+15:03:08	Error: 	"Not Found" (404) at link https://www.legobr.site/signals/config (from https://www.legobr.site/signals/config/)
+15:03:08	Error: 	"Not Found" (404) at link https://www.legobr.site/signals/plugins (from https://www.legobr.site/signals/plugins/)
+15:03:08	Error: 	"Not Found" (404) at link https://www.legobr.site/_v/public/assets/v1/published (from https://www.legobr.site/_v/public/assets/v1/published/)
+15:03:08	Error: 	"Not Found" (404) at link https://www.legobr.site/public/react (from https://www.legobr.site/public/react/)
+15:03:08	Error: 	"Not Found" (404) at link https://www.legobr.site/pub/saml (from https://www.legobr.site/pub/saml/)
+15:03:08	Error: 	"Not Found" (404) at link https://www.legobr.site/refreshtoken (from https://www.legobr.site/refreshtoken/)
+15:03:08	Error: 	"Not Found" (404) at link https://www.legobr.site/arquivos/ids (from https://www.legobr.site/arquivos/ids/)
+15:03:08	Error: 	"Connect Error" (-4) after 2 retries at link cdn.dsspn.com/trk/v1.1/pixel.min.js?c=0f73f570-7328-422a-8793-e691fa1c1fa4&e=0&n=Legostore&cb= (from https://www.legobr.site/77242-lego-speed-champions-ferrari-sf-24-f1)
+
+HTTrack Website Copier/3.51-0 mirror complete in 10 minutes 1 seconds : 529 links scanned, 455 files written (124529622 bytes overall) [81280651 bytes received at 135242 bytes/sec], 53868767 bytes transferred using HTTP compression in 200 files, ratio 18%, 1.2 requests per connection
+(62 errors, 22 warnings, 2 messages)
+(1 links failed to transfer, so the mirror is incomplete)
+(Some links above the start directory were not mirrored. Pass -B (--can-go-up-and-down) to mirror them.)
